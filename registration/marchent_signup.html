@@ -237,14 +237,14 @@
                                                                 email: $('#usermail').val(),
                                                                 password: $('#upassword').val(),
                                                                 vpassword: $('#cpassword')
-                                                                .val(),
+                                                                    .val(),
                                                                 'csrf_test_name': '224e85ac5728d1fcb0970f60b187d5c3'
                                                             },
                                                             crossDomain: true,
                                                             success: function (data) {
                                                                 console.log("Response " +
                                                                     JSON.stringify(data)
-                                                                    );
+                                                                );
                                                                 if (data.success == false) {
                                                                     $('#regbtn').prop(
                                                                         'disabled',
@@ -465,8 +465,23 @@
     <!-- End Header -->
     <style>
         .Merchantregisterform {
-            padding: 20px 200px;
+            padding: 20px 80px;
         }
+
+        @media (max-width: 768px) {
+
+            /* .Merchantregisterform {
+                padding: 20px 20px;
+
+            } */
+
+            @media (max-width: 480px) {
+
+                .Merchantregisterform {
+                    padding: 20px 20px;
+
+                }
+            }
     </style>
 
     <script>
@@ -791,34 +806,36 @@
                         <img class="img-responsive" src="../assets/img/itcl-logo2.png" alt="" />
                     </div><!-- End Single Content -->
 
-             
-            </div><!-- End Col-lg-4 -->
 
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="single-content">
-                    <h4>services</h4>
-                    <ul>
-                        <li><a href="../shop_online.html">Shop Online</a></li>
-                        <li><a href="../billspay.html">Mobile top-up</a></li>
-                        <li><a href="../home/tax_payment.html">Tax Payment</a></li>
-                        <li><a href="#">Bills Pay</a></li>
-                        <li><a href="#">E-Commerz</a></li>
-                    </ul>
-                </div><!-- End Single Content -->
-            </div><!-- End Col-lg-4 -->
+                </div><!-- End Col-lg-4 -->
 
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <div class="single-content">
-                    <h4>info</h4>
-                    <p>With 35+ Banks in the rapidly evolving arena of Electronic Payment & Transaction System Q-Cash
-                        provide banks and retailers with an advanced infrastructure for Online Transaction Processing &
-                        Settlement;while operating the largest independent ATM & Merchant network in Bangladesh by
-                        accepting all major International & Domestic Cards.</p>
-                </div><!-- End Single Content -->
-            </div><!-- End Col-lg-4 -->
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="single-content">
+                        <h4>services</h4>
+                        <ul>
+                            <li><a href="../shop_online.html">Shop Online</a></li>
+                            <li><a href="../billspay.html">Mobile top-up</a></li>
+                            <li><a href="../home/tax_payment.html">Tax Payment</a></li>
+                            <li><a href="#">Bills Pay</a></li>
+                            <li><a href="#">E-Commerz</a></li>
+                        </ul>
+                    </div><!-- End Single Content -->
+                </div><!-- End Col-lg-4 -->
 
-        </div><!-- End Row -->
-    </div><!-- End Content Container -->
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="single-content">
+                        <h4>info</h4>
+                        <p>With 35+ Banks in the rapidly evolving arena of Electronic Payment & Transaction System
+                            Q-Cash
+                            provide banks and retailers with an advanced infrastructure for Online Transaction
+                            Processing &
+                            Settlement;while operating the largest independent ATM & Merchant network in Bangladesh by
+                            accepting all major International & Domestic Cards.</p>
+                    </div><!-- End Single Content -->
+                </div><!-- End Col-lg-4 -->
+
+            </div><!-- End Row -->
+        </div><!-- End Content Container -->
     </div><!-- End Content Area -->
     <!-- End Content --><input type="hidden" id="dailylimit" name="dailylimit" value="">
     <!-- Start Footer Navigation -->
@@ -1006,7 +1023,8 @@
                     alert("Please add same operator!!!");
                 } else {
                     if (checkMobileNumber($("#mobileNumber").val()) == true && $("#mobileNumber")
-                    .val() != "" && $("#amount").val() != "" && $("#amount").val() >= 20 && $("#amount")
+                        .val() != "" && $("#amount").val() != "" && $("#amount").val() >= 20 && $(
+                            "#amount")
                         .val() <= 1000 && $('input[name=type]:checked').length != 0) {
                         $("#tablBody").append('<tr id="row_' + rowNum + '"><td id="number_' + rowNum +
                             '">' + $("#mobileNumber").val() + '</td><td>' + $("#amount").val() +
@@ -1073,7 +1091,7 @@
                     }
                     if (dailylimit > 500) {
                         alert("Daily Minimum Amount Allow 500 tk. Only. You already used " + a +
-                        " tk.");
+                            " tk.");
                         return false;
                     }
                     if ($("#amount").val() < 10) {
