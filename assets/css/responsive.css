@@ -1,0 +1,223 @@
+/* This CSS for small Mobile*/
+@media (max-width: 767px) {
+
+.main-navigation ul li a{padding: 18px 10px;}
+
+.single-promo-link a{padding: 10px 15px;}
+.footer-menu ul li a{padding-left: 0px; padding-right: 5px;}
+.main-navigation ul li a{font-size: 12px;}
+.log-in-button {font-size: 14px; padding: 5px 10px;}
+.main-navigation{margin: 0px;}
+.promo {margin-top: -35px;padding: 15px 55px;}
+.single-promo-link a {font-size: 12px;line-height: 36px;}
+.single-content p{font-size: 10px;line-height: 20px;}
+.footer-navigation-area ul li a{padding: 0px 0px 5px 0;font-size: 8px;}
+.social-bookmarks img{padding-left: 10px;}
+.copy-right p {font-size: 12px;}
+.footer-menu ul li a{padding-left: 0px; padding-right: 5px;font-size: 9px;}
+.register-button {margin-bottom: 15px;margin-top: 15px;}
+.promo-area{padding-bottom: 0px;}
+.single-promo {margin-bottom: 15px;}
+/**************************
+Page One Style
+****************************/
+.tav-navigation ul li a {font-size: 12px;padding: 3px 15px;}
+.single-merchants {width: 95%;}
+.single-merchants-logo {height: 110px; width:100%;}
+.single-merchants-logo img{margin-top: 27px;}
+.single-merchants-details{width: 100%; margin-left: 0;}
+.single-merchants-details h2{font-size: 12px;line-height: 16px; margin: 5px 0;}
+.single-merchants-details p{line-height: 18px;}
+.single-merchants-details a{padding: 5px 55px; margin-left: 0;}
+
+
+
+
+
+
+/**************************
+Page Two Style
+****************************/
+.custom-heading{font-size: 14px;line-height: 22px;}
+.custom-para{font-size: 16px;line-height: 27px;}
+.left-content-img img{margin-right: 55px;float: left; margin-bottom: 40px;}
+.heading-tab-para h4{font-size: 18px;line-height: 22px;}
+.left-content{border-bottom: 1px solid #ddd;padding-bottom: 20px;margin-right: 0;}
+
+
+
+
+}
+
+
+
+/* This CSS for Tablet */
+@media (min-width: 768px) {
+
+.main-navigation ul li a{padding: 18px 5px;}
+#home a:hover, .active{
+    background: url("../img/hover1.png") no-repeat scroll -124px 37px rgba(0, 0, 0, 0);
+}
+#about-us a:hover{
+    background: url("../img/hover1.png") no-repeat scroll -114px 37px rgba(0, 0, 0, 0);
+}
+#payment-gateway a:hover{
+    background: url("../img/hover1.png") no-repeat scroll -84px 37px rgba(0, 0, 0, 0);
+}
+#payment-solutions a:hover{
+    background: url("../img/hover1.png") no-repeat scroll -84px 37px rgba(0, 0, 0, 0);
+}
+.single-promo-link a{font-size: 12px;line-height: 26px;padding: 5px;}
+.footer-menu ul li a{padding-left: 0px; padding-right: 5px;font-size: 9px;}
+.main-navigation ul li a{font-size: 12px;}
+.log-in-button {font-size: 14px; padding: 5px 10px;}
+.main-navigation{margin: 55px 0px 0px;}
+.promo {margin-top: -35px; padding: 0 100px;}
+.single-content p{font-size: 8px;line-height: 18px;}
+.footer-navigation-area ul li a{padding: 10px 10px 10px 0;font-size: 14px;}
+.social-bookmarks img{padding-left: 10px;}
+.copy-right p {font-size: 12px;}
+.register-button {margin-bottom: 0px;margin-top: 15px;}
+.promo-area{padding-bottom: 60px;}
+.single-promo {margin-bottom: 0px;}
+/**************************
+Page One Style
+****************************/
+.tav-navigation ul li a {padding: 5px 12px;}
+.single-merchants {width: 95%;}
+.single-merchants-logo {height: 110px; width: 25%;}
+.single-merchants-logo img{margin-top: 27px;}
+.single-merchants-details{width: 69%; margin-left: 22px;}
+.single-merchants-details h2{font-size: 12px;line-height: 16px; margin-bottom: 0; margin-top: 0;}
+.single-merchants-details p{line-height: 18px;}
+/*.single-merchants-details a{padding: 5px 190px;margin-left: -21px;}
+*/
+
+
+
+
+
+/**************************
+Page Two Style
+****************************/
+.custom-heading{font-size: 14px;line-height: 24px;}
+.custom-para{font-size: 14px;line-height: 24px;}
+.left-content-img img{margin-right: 55px; margin-bottom: 40px; float: left;}
+.heading-tab-para h4{font-size: 22px;line-height: 25px;}
+.left-content{border-right: 1px solid #ddd;padding-bottom: 120px;margin-bottom: 0;}
+
+
+
+}
+
+/* This CSS for Medium Devices */
+@media (min-width: 992px) {
+
+.main-navigation ul li a{padding: 18px 10px;}
+#home a:hover, .active{
+    background: url("../img/hover1.png") no-repeat scroll -116px 40px rgba(0, 0, 0, 0);
+}
+#about-us a:hover{
+    background: url("../img/hover1.png") no-repeat scroll -103px 40px rgba(0, 0, 0, 0);
+}
+#payment-gateway a:hover{
+    background: url("../img/hover1.png") no-repeat scroll -68px 40px rgba(0, 0, 0, 0);
+}
+#payment-solutions a:hover{
+    background: url("../img/hover1.png") no-repeat scroll -68px 40px rgba(0, 0, 0, 0);
+}
+.single-promo-link a{padding: 10px 15px;font-size: 15px;line-height: 40px;}
+.footer-menu ul li a{padding-left: 0px; padding-right: 5px; font-size: 12px;}
+.main-navigation ul li a{font-size: 14px;}
+.log-in-button {font-size: 16px; padding: 5px 15px;}
+.main-navigation{margin: 40px 0px;}
+.promo{margin-top: -65px;padding: 0 80px;}
+.single-content p{font-size: 12px;line-height: 20px;}
+.footer-navigation-area ul li a{padding: 15px 15px 15px 0;font-size: 14px;}
+.social-bookmarks img{padding-left: 15px;}
+.copy-right p {font-size: 14px;}
+.register-button {margin-bottom: 0px;margin-top: 15px;}
+.promo-area{padding-bottom: 60px;}
+.single-promo {margin-bottom: 0px;}
+/**************************
+Page One Style
+****************************/
+.tav-navigation ul li a {padding: 5px 39px;}
+.single-merchants {width: 46%;}
+.single-merchants-logo {height: 110px; width: 25%;}
+.single-merchants-logo img{margin-top: 27px;}
+.single-merchants-details{width: 69%; margin-left: 22px;}
+.single-merchants-details h2{font-size: 12px;line-height: 16px;margin-bottom: 0; margin-top: 0;}
+.single-merchants-details p{line-height: 18px;}
+/*.single-merchants-details a{padding: 5px 110px;margin-left: -21px;}*/
+
+
+
+/**************************
+Page Two Style
+****************************/
+.custom-heading{font-size: 18px;line-height: 28px;}
+.custom-para{font-size: 16px;line-height: 27px;}
+.left-content-img img{margin-right: 35px; float: left; margin-bottom: 0;}
+.heading-tab-para h4{font-size: 22px;line-height: 25px;}
+.left-content{border-right: 1px solid #ddd;padding-bottom: 120px;margin-bottom: 0;}
+
+
+
+}
+
+/* This CSS for Large Devices */
+@media (min-width: 1200px) {
+
+.main-navigation ul li a{padding: 18px 15px;}
+#home a:hover, .active{
+    background: url("../img/hover1.png") no-repeat scroll -111px 40px rgba(0, 0, 0, 0);
+}
+#about-us a:hover{
+    background: url("../img/hover1.png") no-repeat scroll -100px 40px rgba(0, 0, 0, 0);
+}
+#payment-gateway a:hover{
+    background: url("../img/hover1.png") no-repeat scroll -63px 40px rgba(0, 0, 0, 0);
+}
+#payment-solutions a:hover{
+    background: url("../img/hover1.png") no-repeat scroll -60px 40px rgba(0, 0, 0, 0);
+}
+.single-promo-link a{padding: 10px 30px;font-size: 15px;line-height: 40px;}
+.footer-menu ul li a{padding-left: 10px; padding-right: 10px;}
+.main-navigation ul li a{font-size: 14px;}
+.log-in-button {font-size: 16px; padding: 5px 15px;}
+.main-navigation{margin: 40px 0px;}
+.promo{margin-top: -65px;padding: 0 80px;}
+.single-content p{font-size: 12px;line-height: 20px;}
+.footer-navigation-area ul li a{padding: 15px 15px 15px 0;font-size: 14px;}
+.social-bookmarks img{padding-left: 15px;}
+.copy-right p {font-size: 14px;}
+.register-button {margin-bottom: 0px;margin-top: 15px;}
+.promo-area{padding-bottom: 60px;}
+.single-promo {margin-bottom: 0px;}
+/**************************
+Page One Style
+****************************/
+.tav-navigation ul li a {padding: 5px 64px;}
+.single-merchants {width: 46%;}
+.single-merchants-logo {height: 120px; width: 25%;}
+.single-merchants-logo img{margin-top: 35px;}
+.single-merchants-details{width: 68%; margin-left: 22px;}
+.single-merchants-details h2{    font-size: 15px;line-height: 20px;margin-bottom: 0; margin-top: 0;}
+.single-merchants-details p{line-height: 25px;}
+/*.single-merchants-details a{padding: 5px 147px;margin-left: -21px;}*/
+
+
+
+
+
+/**************************
+Page Two Style
+****************************/
+.custom-heading{font-size: 18px;line-height: 25px;}
+.custom-para{font-size: 16px;line-height: 22px;}
+.left-content-img img{margin-right: 68px; float: left; margin-bottom: 0;}
+.heading-tab-para h4{font-size: 22px;line-height: 25px;}
+.left-content{border-right: 1px solid #ddd;padding-bottom: 120px;margin-bottom: 0;}
+
+}

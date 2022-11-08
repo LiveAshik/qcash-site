@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Qcash Web Portal</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="assets\img\favicon.png">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/dataTables.bootstrap.min.css">
+    <script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/component.css" />
+    <link rel="stylesheet" href="assets/css/slimmenu.css" type="text/css">
+
+    <link href="assets/css/jquery.bxslider.css" rel="stylesheet" />
+
+
+    <script src="assets/js/vendor/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+
+    <!-- Start Header -->
+    <div class="header-area">
+        <!-- Start Header Area -->
+        <div class="container">
+            <!-- Start Header Container -->
+            <div class="row">
+                <!-- Start row -->
+
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <!-- Start Col-lg-2 -->
+                    <div class="logo">
+                        <!-- Start Logo -->
+                        <a href="index.html"><img style="padding-left:50px;" class="img-responsive"
+                                src="assets/img/logo2.png" alt="Qcash Logo"></a>
+
+                    </div><!-- End Logo -->
+                </div><!-- End Col-lg-2 -->
+
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <!-- Start Col-lg-7 -->
+                    <div class="main-navigation">
+                        <!-- Start Main Navigation -->
+
+                        <nav>
+                            <ul id="navigation" class="slimmenu">
+                                <li id="home"><a class="active-home" href="index.html">Home</a></li>
+                                <li id="about-us"><a class="" href="about_us.html">About Us</a></li>
+                                <li id="payment-gateway"><a class="" href="home/payment_gateway.html">Payment
+                                        Gateway</a></li>
+                                <li id="payment-solutions"><a class="" href="home/payment_solutions.html">Payment
+                                        Solutions</a></li>
+                            </ul>
+                        </nav>
+
+                    </div><!-- End Main Navigation -->
+                </div><!-- End Col-lg-7 -->
+
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <!-- Start Col-lg-3 -->
+
+                    <div class="search-box clearfix">
+                        <div id="sb-search" class="sb-search">
+                            <form action="#">
+                                <input class="sb-search-input" placeholder="Search" type="text" value="" name="term"
+                                    id="term">
+                                <input class="sb-search-submit" type="button" value="search">
+                                <span class="sb-icon-search"></span>
+                            </form>
+                        </div>
+                    </div><!-- End Search Box -->
+
+                    <div class="register-button pull-right">
+                        <a class="log-in-button" id="log-in-button" href="#" data-toggle="modal"
+                            data-target="#logModal">Login</a>
+                        <a class="log-in-button sign-up" id="sign-up" href="#" data-toggle="modal"
+                            data-target="#logModal">Sign up</a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <div>
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" id="sign-in-tab" class=""><a href="#topsignin"
+                                                    aria-controls="signin" role="tab" data-toggle="tab">Sign In</a></li>
+                                            <li role="presentation" id="sign-up-tab"><a href="#topregistration"
+                                                    aria-controls="Registration" role="tab"
+                                                    data-toggle="tab">Registration</a></li>
+                                            <li role="presentation" id="top-reset-tab"><a href="#topresetpassword"
+                                                    aria-controls="resetpassword" role="tab" data-toggle="tab">Reset
+                                                    Password</a></li>
+                                        </ul>
+
+                                        <script type="text/javascript">
+                                            $(document).ready(function () {
+
+                                                $("#topsigninform").submit(function (event) {
+                                                    event.preventDefault();
+                                                    //var formData = $("#topsigninform").serialize();
+
+                                                    $("#email").prop('disabled', true);
+                                                    $("#password").prop('disabled', true);
+                                                    $("#login-btn").prop('disabled', true);
+                                                    $("#loginmsg").show();
+                                                    $("logino").hide();
+
+                                                    $.ajax({
+                                                        url: "https://www.qcash.com.bd/home/user_login_chk",
+                                                        dataType: 'JSON',
+                                                        type: 'POST',
+                                                        cache: false,
+                                                        data: {
+                                                            username: $('#email').val(),
+                                                            password: $('#password').val(),
+                                                            'csrf_test_name': '224e85ac5728d1fcb0970f60b187d5c3'
+                                                        },
+                                                        crossDomain: true,
+                                                        success: function (data) {
+                                                            console.log("Response " + JSON
+                                                                .stringify(data));
+                                                            if (data.success == false) {
+                                                                $("#result").html(data.msg);
+                                                                $("#result").fadeIn("slow");
+
+                                                                $("#email").prop('disabled',
+                                                                    false);
+                                                                $("#password").prop(
+                                                                    'disabled', false);
+                                                                $("#login-btn").prop(
+                                                                    'disabled', false);
+                                                                $("#loginmsg").hide();
+                                                                $("logino").show();
+
+                                                            } else {
+                                                                document.location =
+                                                                    "billspay.html";
+
+                                                                $("#email").prop('disabled',
+                                                                    false);
+                                                                $("#password").prop(
+                                                                    'disabled', false);
+                                                                $("#login-btn").prop(
+                                                                    'disabled', false);
+                                                                $("logino").show();
+
+                                                                $("#email").val("");
+                                                                $("#password").val("");
+                                                                $("#login-btn").val("");
+
+
+                                                            }
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        </script>
+
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane" id="topsignin">
+                                                <div style="padding:0;" class="signinarea">
+                                                    <div class="formtop">
+                                                        <h2 class="custom-heading">Sign In Your Account</h2>
+                                                    </div>
+                                                    <form id="topsigninform" method="post">
+                                                        <div class="form-group">
+                                                            <input id="email" type="email" name="username"
+                                                                class="rechargeinput form-control" aria-describedby=""
+                                                                placeholder="Enter Your Email Address">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input id="password" type="password" name="password"
+                                                                class="rechargeinput form-control"
+                                                                placeholder="Enter Password">
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label><input type="checkbox" value="">Remember Me</label>
+                                                        </div>
+                                                        <button id="login-btn" type="submit" class="btn btn-recharge">
+                                                            Sign In</button>
+                                                    </form>
+                                                    <p style="display: none;" id="loginmsg">Please Wait...</p>
+                                                    <p style="color:red;" id="result"></p>
+                                                    <div id="logino">
+                                                        <span style="cursor: pointer;color:#000;"
+                                                            id="reset-password-button">Forgot password?</span>
+                                                        <p style="color:#000;margin: 0;">Create new account click <a
+                                                                id="sign-up" href="#">here</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script type="text/javascript">
+                                                $(document).ready(function () {
+
+                                                    $("#newuser").submit(function (event) {
+
+                                                        $('#regbtn').prop('disabled', true);
+                                                        $('#fullname').prop('disabled', true);
+                                                        $('#mobileno').prop('disabled', true);
+                                                        $('#usermail').prop('disabled', true);
+                                                        $('#upassword').prop('disabled', true);
+                                                        $('#cpassword').prop('disabled', true);
+
+                                                        $("#regmsg").show();
+                                                        $("rego").hide();
+
+                                                        event.preventDefault();
+                                                        //var formData = $("#newuser").serialize();
+
+                                                        $.ajax({
+                                                            url: "https://www.qcash.com.bd/registration/user_register",
+                                                            dataType: 'JSON',
+                                                            type: 'POST',
+                                                            cache: false,
+                                                            data: {
+                                                                firstname: $('#fullname').val(),
+                                                                mobile: $('#mobileno').val(),
+                                                                email: $('#usermail').val(),
+                                                                password: $('#upassword').val(),
+                                                                vpassword: $('#cpassword')
+                                                                    .val(),
+                                                                'csrf_test_name': '224e85ac5728d1fcb0970f60b187d5c3'
+                                                            },
+                                                            crossDomain: true,
+                                                            success: function (data) {
+                                                                console.log("Response " +
+                                                                    JSON.stringify(data)
+                                                                );
+                                                                if (data.success == false) {
+                                                                    $('#regbtn').prop(
+                                                                        'disabled',
+                                                                        false);
+                                                                    $('#fullname').prop(
+                                                                        'disabled',
+                                                                        false);
+                                                                    $('#mobileno').prop(
+                                                                        'disabled',
+                                                                        false);
+                                                                    $('#usermail').prop(
+                                                                        'disabled',
+                                                                        false);
+                                                                    $('#upassword').prop(
+                                                                        'disabled',
+                                                                        false);
+                                                                    $('#cpassword').prop(
+                                                                        'disabled',
+                                                                        false);
+
+                                                                    $("#regmsg").hide();
+                                                                    $("rego").show();
+
+
+                                                                    $("#rresult").html(data
+                                                                        .msg);
+                                                                    $("#rresult").fadeIn(
+                                                                        "slow");
+
+                                                                } else {
+                                                                    //document.location="home";
+                                                                    $('#regbtn').prop(
+                                                                        'disabled',
+                                                                        false);
+                                                                    $('#fullname').prop(
+                                                                        'disabled',
+                                                                        false);
+                                                                    $('#mobileno').prop(
+                                                                        'disabled',
+                                                                        false);
+                                                                    $('#usermail').prop(
+                                                                        'disabled',
+                                                                        false);
+                                                                    $('#upassword').prop(
+                                                                        'disabled',
+                                                                        false);
+                                                                    $('#cpassword').prop(
+                                                                        'disabled',
+                                                                        false);
+
+                                                                    $("#regmsg").hide();
+                                                                    $("rego").show();
+
+                                                                    $("#rresult").html(data
+                                                                        .msg);
+                                                                    $("#rresult").fadeIn(
+                                                                        "slow");
+                                                                    $('#fullname').val("");
+                                                                    $('#mobileno').val("");
+                                                                    $('#usermail').val("");
+                                                                    $('#upassword').val("");
+                                                                    $('#cpassword').val("");
+                                                                }
+                                                            }
+                                                        });
+                                                    });
+                                                });
+                                            </script>
+                                            <div role="tabpanel" class="tab-pane" id="topregistration">
+                                                <div style="padding:0;" class="registrationarea">
+                                                    <div class="formtop">
+                                                        <h2 class="custom-heading">Register a new account</h2>
+                                                    </div>
+                                                    <form id="newuser">
+                                                        <div class="form-group">
+                                                            <input type="text" class="rechargeinput form-control"
+                                                                name="firstname" id="fullname" aria-describedby=""
+                                                                placeholder="Enter Your Full Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" name="mobile"
+                                                                class="rechargeinput form-control" id="mobileno"
+                                                                placeholder="Enter Your Mobile Number">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="email" name="email"
+                                                                class="rechargeinput form-control" id="usermail"
+                                                                placeholder="Enter Email Address">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="password" name="password"
+                                                                class="rechargeinput form-control" id="upassword"
+                                                                placeholder="Enter Password">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="password" name="vpassword"
+                                                                class="rechargeinput form-control" id="cpassword"
+                                                                placeholder="Confirm Password">
+                                                        </div>
+
+                                                        <button type="submit" id="regbtn" class="btn btn-recharge">
+                                                            Register</button>
+                                                    </form>
+                                                    <p style="display: none;" id="regmsg">Please Wait...</p>
+                                                    <div id="rego">
+                                                        <p style="color:#000;">Already have account. Try to <a
+                                                                id="log-in-button" href="#">Sign in</a> here.</p>
+                                                        <p style="color:red;" id="rresult"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="topresetpassword">
+                                                <div style="padding:0;" class="resetarea">
+                                                    <div class="formtop">
+                                                        <h2 class="custom-heading">Reset your password</h2>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        $(document).ready(function () {
+
+                                                            $("#resetpassword").submit(function (event) {
+                                                                event.preventDefault();
+                                                                //var formData = $("#resetpassword").serialize();
+                                                                $('#resetemail').prop('disabled', true);
+                                                                $('#waitmsg').show();
+                                                                $('#rebtn').hide();
+                                                                $("#resetresult").hide();
+
+                                                                $.ajax({
+                                                                    url: "https://www.qcash.com.bd/registration/reset_password",
+                                                                    dataType: 'JSON',
+                                                                    type: 'POST',
+                                                                    cache: false,
+                                                                    data: {
+                                                                        email: $('#resetemail')
+                                                                            .val(),
+                                                                        'csrf_test_name': '224e85ac5728d1fcb0970f60b187d5c3'
+                                                                    },
+                                                                    crossDomain: true,
+                                                                    success: function (data) {
+                                                                        console.log(
+                                                                            "Response " +
+                                                                            JSON
+                                                                            .stringify(
+                                                                                data));
+                                                                        if (data.success ==
+                                                                            false) {
+                                                                            $("#resetresult")
+                                                                                .html(data
+                                                                                    .msg);
+                                                                            $("#resetresult")
+                                                                                .fadeIn(
+                                                                                    "slow");
+                                                                            $('#resetemail')
+                                                                                .prop(
+                                                                                    'disabled',
+                                                                                    false);
+                                                                            $('#waitmsg')
+                                                                                .hide();
+                                                                            $('#rebtn')
+                                                                                .show();
+                                                                        } else {
+                                                                            //document.location="home";
+                                                                            $("#resetresult")
+                                                                                .html(data
+                                                                                    .msg);
+                                                                            $("#resetresult")
+                                                                                .fadeIn(
+                                                                                    "slow");
+                                                                            $('#resetemail')
+                                                                                .prop(
+                                                                                    'disabled',
+                                                                                    false);
+                                                                            $('#resetemail')
+                                                                                .val('');
+                                                                            $('#waitmsg')
+                                                                                .hide();
+                                                                            $('#rebtn')
+                                                                                .show();
+                                                                        }
+                                                                    }
+                                                                });
+                                                            });
+                                                        });
+                                                    </script>
+                                                    <form id="resetpassword">
+                                                        <div class="form-group">
+
+                                                            <input type="email" class="rechargeinput form-control"
+                                                                name="email" id="resetemail" aria-describedby=""
+                                                                placeholder="Email">
+                                                        </div>
+
+                                                        <button id="rebtn" type="submit" class="btn btn-recharge"> Reset
+                                                        </button>
+                                                    </form>
+                                                    <p style="color:#000;">Know your password. Try to <a
+                                                            id="log-in-button" href="#">Sign in</a> here.</p>
+                                                    <p style="color:red;font-weight:bold;" id="resetresult"></p>
+                                                    <p style="color:#000;font-weight:bold;display: none;" id="waitmsg">
+                                                        Please Wait...</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- End Col-lg-3 -->
+
+            </div><!-- End Row -->
+        </div><!-- End Header Area -->
+    </div><!-- End Header Area -->
+    <!-- End Header -->
+    <!-- Start Slider -->
+    <div class="slider-area">
+        <!-- Start Slider Area -->
+        <div class="slider">
+            <ul class="bxslider">
+                <li><img class="img-responsive" src="assets/img/Slider/new/slider_01.jpg" /></li>
+                <li><img class="img-responsive" src="assets/img/Slider/new/slider_2.jpg" /></li>
+                <li><img class="img-responsive" src="assets/img/Slider/new/slider_3.jpg" /></li>
+                <li><img class="img-responsive" src="assets/img/Slider/new/slider_4.jpg" /></li>
+            </ul>
+        </div>
+    </div><!-- End Slider Area -->
+    <!-- End Slider -->
+
+    <!-- Start Promo -->
+    <div class="promo-area">
+        <!-- Start Promo Area -->
+        <div id="ttt">
+            <div class="container">
+                <!-- Start Promo Container -->
+                <div class="row">
+                    <!-- Start row -->
+
+                    <div class="promo">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="single-promo">
+                                <div class="single-promo-img">
+                                    <a href="shop_online.html"><img src="assets/img/promo.png" alt=""
+                                            class="img-thumbnail img-responsive clearfix"></a>
+                                </div>
+                                <div class="single-promo-link">
+                                    <a href="shop_online.html">Shop Online</a>
+                                </div>
+                            </div><!-- End Single Promo -->
+                        </div><!-- End Col-lg-4 -->
+
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="single-promo">
+                                <div class="single-promo-img">
+                                    <a href="billspay.html"><img src="assets/img/promo1.png" alt=""
+                                            class="img-thumbnail img-responsive clearfix"></a>
+                                </div>
+                                <div class="single-promo-link">
+                                    <a href="billspay.html">TopUp & Bills Pay</a>
+                                </div>
+                            </div><!-- End Single Promo -->
+                        </div><!-- End Col-lg-4 -->
+
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="single-promo">
+                                <div class="single-promo-img">
+                                    <a data-toggle="modal" data-target="#MerchantsignupModal"
+                                        href="#MerchantsignupModal"><img src="assets/img/promo2.png" alt=""
+                                            class="img-thumbnail img-responsive clearfix"></a>
+                                </div>
+                                <div class="single-promo-link">
+
+                                    <a href="registration/marchent_signup.html">Merchant Sign up</a>
+                                </div>
+                            </div><!-- End Single Promo -->
+                        </div><!-- End Col-lg-4 -->
+
+                    </div>
+                </div><!-- End Row -->
+            </div><!-- End Promo Container -->
+        </div>
+    </div><!-- End Promo Area -->
+    <!-- End Promo -->
+
+
+    <!-- Start Promo -->
+    <div class="">
+        <!-- Start Promo Area -->
+        <div id="">
+            <div class="container">
+                <!-- Start Promo Container -->
+                <div class="row">
+                    <!-- Start row -->
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <img class="img-responsive" src="assets/img/shadow1.png" alt="" />
+                    </div>
+                </div><!-- End Row -->
+            </div><!-- End Promo Container -->
+        </div>
+    </div><!-- End Promo Area -->
+    <!-- End Promo -->
+    <!-- Start Content -->
+    <div id="homePage" class="content-area">
+        <!-- Start Content Area -->
+        <div class="container">
+            <!-- Start Content Container -->
+            <div class="row">
+                <!-- Start row -->
+
+                <div class="col-lg-5 col-md-5 col-sm-5">
+                    <div class="single-content pull-left" style="width:100%;">
+                        <h4>company</h4>
+                        <a target="_blank" href="http://itcbd.com/"><img class="img-responsive"
+                                src="assets/img/itcl-logo3.png" alt="ITCL Logo"></a>
+
+                        <img class="img-responsive" src="assets/img/itcl-logo2.png" alt="" />
+                    </div><!-- End Single Content -->
+
+             
+            </div><!-- End Col-lg-4 -->
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="single-content">
+                    <h4>services</h4>
+                    <ul>
+                        <li><a href="shop_online.html">Shop Online</a></li>
+                        <li><a href="billspay.html">Mobile top-up</a></li>
+                        <li><a href="home/tax_payment.html">Tax Payment</a></li>
+                        <li><a href="#">Bills Pay</a></li>
+                        <li><a href="#">E-Commerz</a></li>
+                    </ul>
+                </div><!-- End Single Content -->
+            </div><!-- End Col-lg-4 -->
+
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="single-content">
+                    <h4>info</h4>
+                    <p>With 35+ Banks in the rapidly evolving arena of Electronic Payment & Transaction System Q-Cash
+                        provide banks and retailers with an advanced infrastructure for Online Transaction Processing &
+                        Settlement;while operating the largest independent ATM & Merchant network in Bangladesh by
+                        accepting all major International & Domestic Cards.</p>
+                </div><!-- End Single Content -->
+            </div><!-- End Col-lg-4 -->
+
+        </div><!-- End Row -->
+    </div><!-- End Content Container -->
+    </div><!-- End Content Area -->
+    <!-- End Content --><input type="hidden" id="dailylimit" name="dailylimit" value="">
+    <!-- Start Footer Navigation -->
+    <div class="footer-navigation-area">
+        <!-- Start Footer Navigation Area -->
+        <div class="container">
+            <!-- Start Footer Navigation Container -->
+            <div class="row">
+                <!-- Start row -->
+
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <nav>
+                        <ul>
+                            <li><a href="home/help.html">Help</a></li>
+                            <li><a href="home/atm_locator.html">ATM locator</a></li>
+                            <li><a href="home/partners.html">Partners</a></li>
+                            <li><a href="home/services.html">services</a></li>
+                            <li><a href="home/contact.html">contact</a></li>
+                        </ul>
+                    </nav>
+                </div><!-- End Col-lg-8 -->
+
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="social-bookmarks pull-right">
+
+                        <a
+                            href="https://www.facebook.com/pages/Information-Technology-Consultants-Limited-Qcash/297596103614046?ref=hl"><img
+                                src="assets/img/facebook.png" alt=""></a>
+                    </div>
+                </div><!-- End Col-lg-4 -->
+
+            </div><!-- End Row -->
+        </div><!-- End Footer Navigation Container -->
+    </div><!-- End Footer Navigation Area -->
+    <!-- End Footer Navigation -->
+
+    <!-- Start Footer -->
+    <div class="footer-area">
+        <!-- Start Footer Area -->
+        <div class="container">
+            <!-- Start Footer Container -->
+            <div class="row">
+                <!-- Start row -->
+
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="copy-right">
+                        <p>Copyright 2000 - 2022 Information Technology Consultants Limited.</p>
+                    </div><!-- End Copy Right -->
+                </div><!-- End Col-lg-8 -->
+
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="footer-menu pull-right">
+                        <ul>
+                            <li><a href="home/sitemap.html">Sitemap</a>|</li>
+                            <li><a href="home/term_of_use.html">Terms of Use</a>|</li>
+                            <li><a href="home/privacy_policy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div><!-- Footer Menu -->
+                </div><!-- End Col-lg-4 -->
+
+            </div><!-- End Row -->
+        </div><!-- End Footer Container -->
+    </div><!-- End Footer Area -->
+    <!-- End Footer -->
+
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <!--<script src="assets/js/bootstrapValidator.js"></script>-->
+
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/classie.js"></script>
+    <script src="assets/js/uisearch.js"></script>
+
+    <script src="assets/js/jquery.slimmenu.js"></script>
+    <script src="assets/js/jquery.bxslider.min.js"></script>
+    <script src="assets/js/cbpFWTabs.js"></script>
+    <!--<script src="assets/js/jquery-ui.js"></script>-->
+
+    <noscript>
+        <META HTTP-EQUIV="Refresh" CONTENT="0;URL=noscripts.html">
+    </noscript>
+
+    <script>
+        new UISearch(document.getElementById('sb-search'));
+        new CBPFWTabs(document.getElementById('tabs'));
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#navigation').slimmenu({
+                resizeWidth: '749',
+                collapserTitle: 'Main Menu',
+                animSpeed: 'medium',
+                easingEffect: null,
+                indentChildren: false,
+                childrenIndenter: '&nbsp;'
+            });
+
+            $('.bxslider').bxSlider({
+                auto: true,
+                autoControls: true,
+                controls: true,
+                pager: false,
+                autoStart: true
+            });
+
+            $(document).on("click", "#sign-up", function (e) {
+                $('#sign-in-tab').removeClass('active');
+                $('#top-reset-tab').removeClass('active');
+
+                $('#topsignin').removeClass('active');
+                $('#topresetpassword').removeClass('active');
+
+                $('#sign-up-tab').addClass('active');
+                $('#topregistration').addClass('active');
+            });
+
+            $(document).on("click", "#log-in-button", function (e) {
+                $('#sign-up-tab').removeClass('active');
+                $('#top-reset-tab').removeClass('active');
+
+                $('#topregistration').removeClass('active');
+                $('#topresetpassword').removeClass('active');
+
+                $('#sign-in-tab').addClass('active');
+                $('#topsignin').addClass('active');
+
+            });
+            $(document).on("click", "#reset-password-button", function (e) {
+                $('#sign-in-tab').removeClass('active');
+                $('#topregistration').removeClass('active');
+
+                $('#topsignin').removeClass('active');
+                $('#topregistration').removeClass('active');
+
+                $('#top-reset-tab').addClass('active');
+                $('#topresetpassword').addClass('active');
+
+            });
+
+
+
+
+            function checkMobileNumber(number) {
+                var mobileNumber = /^[0]{1}[1]{1}(5|8|9|7|6){1}[0-9]{8}$/;
+                if (mobileNumber.test(number)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+
+
+            var rowNum = 0;
+            var actualRow = 0;
+            var numbers = [];
+            var operator = 0;
+            $(document).on("click", "#addnew", function (e) {
+
+                if ($('input[name=type]:checked').length == 0) {
+                    alert("Please select Package");
+                }
+
+                if ($("#mobileNumber").val() == "") {
+                    alert("Please enter mobile number");
+                }
+                if ($("#amount").val() == "") {
+                    alert("Please enter amount");
+                } else if ($("#amount").val() < 20) {
+                    alert("Minimum Amount 20 tk.");
+                } else if ($("#amount").val() > 2000) {
+                    alert("Maxium Amount 2000 tk.");
+                } else if (checkMobileNumber($("#mobileNumber").val()) == false) {
+                    alert("Check your mobile number");
+                    $("#mobileNumber").focus();
+                } else if (numbers.indexOf($("#mobileNumber").val()) != -1) {
+                    alert("Number is already added");
+                } else if (operator != 0 && operator != $("#mobileNumber").val().substring(0, 3)) {
+                    alert("Please add same operator!!!");
+                } else {
+                    if (checkMobileNumber($("#mobileNumber").val()) == true && $("#mobileNumber")
+                        .val() != "" && $("#amount").val() != "" && $("#amount").val() >= 20 && $(
+                            "#amount")
+                        .val() <= 1000 && $('input[name=type]:checked').length != 0) {
+                        $("#tablBody").append('<tr id="row_' + rowNum + '"><td id="number_' + rowNum +
+                            '">' + $("#mobileNumber").val() + '</td><td>' + $("#amount").val() +
+                            '</td><td>' + $("input[name='type']:checked").val() +
+                            '</td><td class="btntrash"><a href="#"><i id="' + rowNum +
+                            '" class="trash fa fa-trash-o"aria-hidden="true"></i></a></td></tr>');
+                        rowNum++;
+                        actualRow++;
+                        numbers.push($("#mobileNumber").val());
+
+                        operator = $("#mobileNumber").val().substring(0, 3);
+                        $("#mobileNumber").val("");
+                        $("#amount").val("");
+
+                        $("#tblrecharge").show();
+
+                    }
+                }
+
+            });
+            $(document).on("click", ".trash", function () {
+                var id = $(this).attr("id");
+                actualRow = actualRow - 1;
+                alert($("#number_0").text());
+                var index = numbers.indexOf($("#number_" + id).text());
+                numbers.splice(index, 1);
+                $("#row_" + id).remove();
+
+                if ($('#tblrecharge tr').length == 1) {
+                    $('#tblrecharge').hide();
+                    $('#confirmPayment').hide();
+                    location.reload();
+
+                }
+
+
+            });
+
+            $(document).on("click", "#proceedPayment", function () {
+
+                var a = parseFloat($("#dailylimit").val()),
+                    b = parseFloat($("#amount").val()),
+                    dailylimit = a + b;
+                window.history.forward(-1);
+                $('.btntrash').hide();
+                $(".actionTd").hide();
+                if (actualRow > 0) {
+                    alert("multi");
+                    $('#proceedPayment').hide();
+                    $('#inputForm').hide();
+                    $("#confirmPayment").show();
+                } else {
+                    if ($('input[name=type]:checked').length == 0) {
+                        alert("Please select Package");
+                        return false;
+                    }
+                    if ($("#mobileNumber").val() == "") {
+                        alert("Please enter mobile number");
+                        return false;
+                    }
+                    if ($("#amount").val() == "") {
+                        alert("Please enter amount");
+                        return false;
+                    }
+                    if (dailylimit > 500) {
+                        alert("Daily Minimum Amount Allow 500 tk. Only. You already used " + a +
+                            " tk.");
+                        return false;
+                    }
+                    if ($("#amount").val() < 10) {
+                        alert("Minimum Amount 10 tk.");
+                        return false;
+                    }
+                    if ($("#amount").val() > 500) {
+                        alert("Maximum Amount 500 tk.");
+                        return false;
+                    }
+                    if (checkMobileNumber($("#mobileNumber").val()) == false) {
+                        alert("Check your mobile number");
+                        $("#mobileNumber").focus();
+                        return false;
+                    }
+                    if (numbers.indexOf($("#mobileNumber").val()) != -1) {
+                        alert("Number is already added");
+                        return false;
+                    }
+
+                }
+
+            });
+        });
+
+        $(document).ready(function () {
+            $('#historytable').DataTable({
+                "paging": true,
+                "ordering": true,
+                "info": false
+            });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
